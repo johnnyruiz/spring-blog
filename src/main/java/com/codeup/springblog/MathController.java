@@ -13,17 +13,17 @@ public class MathController {
     public static String add(@PathVariable int a,@PathVariable int b){
        return "The sum of " + a + " and " + b + " is: " + (a + b);
     }
-    @GetMapping("/subtract/{a}/and/{b}")
+    @GetMapping("/subtract/{a}/from/{b}")
     @ResponseBody
     public static String subtract(@PathVariable int a,@PathVariable int b){
-       return "The difference of  " + a + " and " + b + " is: " + (a - b);
+       return "The difference of  " + b + " and " + a + " is: " + (b - a);
     }
     @GetMapping("/multiply/{a}/and/{b}")
     @ResponseBody
     public static String multiply(@PathVariable int a,@PathVariable int b){
        return "The Product of  " + a + " and " + b + " is: " + (a * b);
     }
-    @GetMapping("/divide/{a}/and/{b}")
+    @GetMapping("/divide/{a}/by/{b}")
     @ResponseBody
     public static String divide(@PathVariable int a,@PathVariable int b){
        return "The Quotient of " + a + " and " + b + " is: " + (a / b);

@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <th:block th:replace="partials/bootstrap_style :: stylesheets">
+
+    </th:block>
 </head>
 <body>
+<th:block th:replace="partials/bootstrap_style :: navbar">
+
+</th:block>
+
 
     <h1>Create a Post</h1>
-    <form th:action="@{/post/create}" th:method="post" th:object="${post}">
-        <input th:field="*{owner}" type="hidden" th:value="1"/>
+    <form sec:authorize="isAuthenticated()" th:action="@{/post/create}" th:method="post" th:object="${post}">
         <input th:field="*{title}" type="text" />
         <input th:field="*{body}" type="text" />
         <button>submit</button>
     </form>
+    <th:block th:replace="partials/bootstrap_style :: scripts">
+
+    </th:block>
 
 </body>
 </html>

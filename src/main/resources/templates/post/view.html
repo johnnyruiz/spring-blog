@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <th:block th:replace="partials/bootstrap_style :: stylesheets">
+
+    </th:block>
 </head>
 <body>
+<th:block th:replace="partials/bootstrap_style :: navbar">
+
+</th:block>
+
     <h1>Here is the add you searched</h1>
 
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.body}"></p>
+
+
+    <th:block th:replace="partials/bootstrap_style :: scripts">
+
+    </th:block>
 
 </body>
 </html>

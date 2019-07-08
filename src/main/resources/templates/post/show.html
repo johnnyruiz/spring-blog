@@ -3,14 +3,42 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <th:block th:replace="partials/bootstrap_style :: stylesheets">
+
+    </th:block>
 </head>
 <body>
-      <h1>Here are all post</h1>
 
-    <th:block th:each="post : ${posts}">
-        <h2 th:text="${post.title}"></h2>
-        <h3 th:each="post : ${post.owner}" th:text="${post.email}"></h3>
-        <div th:text="${post.body}"></div>
-    </th:block>
+<th:block th:include="partials/bootstrap_style :: navbar">
+
+</th:block>
+
+      <h1 class="justify-content-center d-flex">Here are all post</h1>
+<div class="container">
+    <div class="row">
+        <th:block th:each="post : ${posts}">
+            <div class="card col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 py-2 px-2" style="width: 18rem;">
+                <div class="card-body text-center">
+                    <h5 class="card-title" th:text="${post.title}"></h5>
+                    <h6 class="card-subtitle mb-2 text-muted" th:each="post : ${post.owner}" th:text="${post.email}"></h6>
+                    <p class="card-text" th:text="${post.body}"></p>
+                    <th:block th:if="${post.owner == (user)}" >
+                        <a th:href="@{/post/edit/__${post.id}__}">
+                            <button class="btn btn-primary">Edit</button>
+                        </a>
+                        <a th:href="@{/post/delete/__${post.id}__}">
+                            <button class="btn btn-danger">Delete</button>
+                        </a>
+                    </th:block>
+                </div>
+            </div>
+        </th:block>
+    </div>
+</div>
+
+      <th:block th:replace="partials/bootstrap_style :: scripts">
+          
+      </th:block>
+
 </body>
 </html>

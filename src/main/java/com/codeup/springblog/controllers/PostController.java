@@ -1,9 +1,11 @@
 package com.codeup.springblog.controllers;
 
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
 import com.codeup.springblog.services.EmailService;
 import com.codeup.springblog.models.Post;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,7 @@ public class PostController {
     @GetMapping("/post")
     public String postIndex(Model model){
         model.addAttribute("posts", postDao.findAll());
+        model.addAttribute("user", userDao.findOne(((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId()));
         return "post/show";
     }
 
@@ -61,7 +64,7 @@ public class PostController {
 
     @PostMapping("/post/create")
     private String insert(@ModelAttribute Post post){
-        post.setOwner(userDao.findOne(1L));
+        post.setOwner((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         postDao.save(post);
         emailService.prepareAndSend(post, "You added a post", "you did it!");
         return "redirect:/post";

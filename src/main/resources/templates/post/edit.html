@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <th:block th:replace="partials/bootstrap_style :: stylesheets">
+
+    </th:block>
 </head>
 <body>
+<th:block th:replace="partials/bootstrap_style :: navbar">
+
+</th:block>
+
 
 <form th:action="@{/post/edit/}" th:method="post" th:object="${post}">
     <input th:field="*{id}" type="hidden" name="id" th:value="*{id}" />
@@ -13,6 +20,9 @@
     <input th:field="*{body}" type="text" th:placeholder="*{body}" />
     <button type="submit">Confirm Changes</button>
 </form>
+<th:block th:replace="partials/bootstrap_style :: scripts">
+
+</th:block>
 
 </body>
 </html>

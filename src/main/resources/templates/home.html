@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    <th:block th:replace="partials/bootstrap_style :: stylesheets">
+
+    </th:block>
+
 </head>
 <body>
+    <th:block th:replace="partials/bootstrap_style :: navbar">
+
+    </th:block>
+
     <h1 th:text='${"Hello World"}'></h1>
 
     <h3>Hello<span th:text='${"World"}'></span></h3>
@@ -14,6 +22,11 @@
     <dvi th:each="number: ${numbers}">
           <li th:text="${number}"></li>
     </dvi>
+
+
+    <th:block th:include="partials/bootstrap_style.html :: scripts">
+
+    </th:block>
 
 </body>
 </html>

@@ -33,7 +33,7 @@ public class PostController {
     @RequestMapping(path = "post/delete/{id}")
     public String deletePost(@PathVariable Long id){
         postDao.delete(id);
-        return "redirect: /post/show";
+        return "redirect:/post";
     }
 
 

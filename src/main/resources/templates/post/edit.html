@@ -13,13 +13,27 @@
 </th:block>
 
 
-<form th:action="@{/post/edit/}" th:method="post" th:object="${post}">
-    <input th:field="*{id}" type="hidden" name="id" th:value="*{id}" />
-    <input th:field="*{owner}" type="hidden" name="id" th:value="*{owner}" />
-    <input th:field="*{title}" type="text" th:placeholder="*{title}" />
-    <input th:field="*{body}" type="text" th:placeholder="*{body}" />
-    <button type="submit">Confirm Changes</button>
-</form>
+<div class="container">
+
+    <h1 class="text-center">Edit your post</h1>
+    <div class="card mt-4" style="width: 100%;">
+        <div class="card-body">
+            <form th:action="@{/post/edit/}" th:method="post" th:object="${post}">
+                <input th:field="*{id}" type="hidden" name="id" th:value="*{id}" />
+                <input th:field="*{owner}" type="hidden" name="id" th:value="*{owner}" />
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input id="title" class="form-control" th:field="*{title}" type="text" th:placeholder="*{title}" />
+                </div>
+                <div class="form-group">
+                    <label for="body">Body</label>
+                    <textarea id="body" class="form-control" th:field="*{body}" type="text" th:placeholder="*{body}"></textarea>
+                </div>
+                    <button class="btn btn-warning d-flex mx-auto" type="submit">Apply Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
 <th:block th:replace="partials/bootstrap_style :: scripts">
 
 </th:block>

@@ -14,13 +14,25 @@
 
 </th:block>
 
-
-    <h1>Create a Post</h1>
-    <form sec:authorize="isAuthenticated()" th:action="@{/post/create}" th:method="post" th:object="${post}">
-        <input th:field="*{title}" type="text" />
-        <input th:field="*{body}" type="text" />
-        <button>submit</button>
-    </form>
+<div class="container">
+    <h1 class="text-center">Create a post</h1>
+    <div class="card mt-4" style="width: 100%;">
+        <div class="card-body">
+            <form sec:authorize="isAuthenticated()" th:action="@{/post/create}" th:method="post" th:object="${post}">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control" th:field="*{title}" id="title" type="text"/>
+                </div>
+                <div class="form-group">
+                    <label for="body">Body</label>
+                    <textarea class="form-control" th:field="*{body}" id="body"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary d-flex mx-auto">submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+        
     <th:block th:replace="partials/bootstrap_style :: scripts">
 
     </th:block>

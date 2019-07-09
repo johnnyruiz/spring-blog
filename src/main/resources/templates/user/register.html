@@ -8,21 +8,26 @@
 <body>
 <th:block th:replace="partials/bootstrap_style :: navbar"></th:block>
 
-
-<h1>Register</h1>
-<form th:action="@{/register}" th:method="post" th:object="${user}">
-    <br/>
-    <label th:for="*{username}">Username</label>
-    <input th:field="*{username}" type="text" />
-    <br/>
-    <label th:for="*{email}">Email</label>
-    <input th:field="*{email}" type="text" />
-    <br/>
-    <label th:for="*{password}">Password</label>
-    <input th:field="*{password}" type="password" />
-    <br/>
-    <button>submit</button>
-</form>
+<div class="container">
+    <h1 class="text-center mt-3">Register</h1>
+    <div class="card mt-4" style="width: 100%;">
+        <div class="card-body">
+            <form th:action="@{/register}" th:method="post" th:object="${user}">
+                <br/>
+                <label th:for="*{username}">Username</label>
+                <input class="form-control" th:field="*{username}" type="text"/>
+                <br/>
+                <label th:for="*{email}">Email</label>
+                <input class="form-control" th:field="*{email}" type="text"/>
+                <br/>
+                <label th:for="*{password}">Password</label>
+                <input class="form-control" th:field="*{password}" type="password"/>
+                <br/>
+                <button class="btn btn-primary mt-2">submit</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <th:block th:replace="partials/bootstrap_style :: scripts"></th:block>

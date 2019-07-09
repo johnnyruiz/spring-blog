@@ -13,11 +13,11 @@
 
 </th:block>
 
-      <h1 class="text-center">Here are all post</h1>
-<div class="container">
-    <div class="row">
+      <h1 class="text-center mt-4">Here are all post</h1>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-between">
         <th:block th:each="post : ${posts}">
-            <div class="card col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 mx-auto" style="width: 18rem;">
+            <div class="card col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 mx-1 mt-2" style="width: 18rem;">
                 <div class="card-body text-center">
                     <h5 class="card-title" th:text="${post.title}"></h5>
                     <h6 class="card-subtitle mb-2 text-muted" th:each="post : ${post.owner}" th:text="${post.email}"></h6>

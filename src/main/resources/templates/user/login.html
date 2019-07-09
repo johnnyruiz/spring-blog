@@ -8,22 +8,28 @@
 <body>
 <th:block th:replace="partials/bootstrap_style :: navbar"></th:block>
 
+<div class="container">
 
-<h1>Login</h1>
-<div th:if="${param.error}">
-    Invalid Username and Password.
+    <h1 class="text-center">Login</h1>
+    <div class="card mt-4" style="width: 100%;">
+        <div class="card-body">
+            <div class="text-danger" th:if="${param.error}">
+                Invalid Username and Password.
+            </div>
+            <div class="text-danger" th:if="${param.logout}">
+                You have been logged out.
+            </div>
+            <form th:action="@{/login}" th:method="post">
+                <label for="username">Username</label>
+                <input class="form-control" name="username" id="username" type="text"/>
+                <label for="password">Password</label>
+                <input class="form-control" name="password" id="password" type="password"/>
+                <button class="btn btn-primary mt-2" type="submit" value="Log In">Log
+                    In</button>
+            </form>
+        </div>
+    </div>
 </div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-
-<form th:action="@{/login}" th:method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" type="text" />
-    <label for="password">Password</label>
-    <input name="password" id="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
 
 
 <th:block th:replace="partials/bootstrap_style :: scripts"></th:block>

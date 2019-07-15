@@ -20,7 +20,7 @@
             <div class="card col col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 mx-1 mt-2" style="width: 18rem;">
                 <div class="card-body text-center">
                     <h5 class="card-title" th:text="${post.title}"></h5>
-                    <h6 class="card-subtitle mb-2 text-muted" th:each="post : ${post.owner}" th:text="${post.email}"></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"th:text="${post.owner.email}"></h6>
                     <p class="card-text" th:text="${post.body}"></p>
                     <th:block th:if="${post.owner == (user)}" >
                         <a th:href="@{/post/edit/__${post.id}__}">
